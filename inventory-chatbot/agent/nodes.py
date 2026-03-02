@@ -17,7 +17,8 @@ def is_hallucination(text: str) -> bool:
         r"Suppose -?[a-z]+[+-]",
         r"Answer: \d+",
         r"y\(q\) =",
-        r"w\(q\) ="
+        r"w\(q\) =",
+        r"floor\("
     ]
     for p in patterns:
         if re.search(p, text, re.IGNORECASE):
@@ -127,9 +128,8 @@ def sql_corrector_node(state: AgentState):
     response = llm.invoke([SystemMessage(content=p)])
     sql_query = extract_sql(response.content)
     
-    # IMPROVED HALLUCINATION CHECK:
-    # If the LLM returns prose instead of SQL, force a loop break by setting a final error.
-    if any(k in sql_query for k in ["Question:", "Let ", "Solve ", "Answer:", "I apologize"]):
+    # If the LLM returns prose or non-supported functions instead of SQL, force a loop break.
+    if any(k in sql_query for k in ["Question:", "Let ", "Solve ", "Answer:", "I apologize", "floor("]):
         print("Hallucination detected. Breaking loop.")
         return {
             "revision_count": 4, # Force termination in should_continue
