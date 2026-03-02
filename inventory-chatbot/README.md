@@ -15,18 +15,18 @@ sequenceDiagram
     participant LLM (Ollama/OpenAI)
     participant SQLite (DB)
 
-    User->>Streamlit: Asks question
-    Streamlit->>FastAPI: POST /api/chat
-    FastAPI->>LangGraph: Invoke Agent
-    LangGraph->>LLM: Generate/Fix SQL
-    LLM-->>LangGraph: SQL Query
-    LangGraph->>SQLite: Execute Query
-    SQLite-->>LangGraph: Data Results
-    LangGraph->>LLM: Format Answer
-    LLM-->>LangGraph: Natural Language Answer
-    LangGraph-->>FastAPI: Final State
-    FastAPI-->>Streamlit: JSON Response
-    Streamlit-->>User: Answers + SQL + Metrics
+    User->>Streamlit (UI): Asks question
+    Streamlit (UI)->>FastAPI (API): POST /api/chat
+    FastAPI (API)->>LangGraph (Agent): Invoke Agent
+    LangGraph (Agent)->>LLM (Ollama/OpenAI): Generate/Fix SQL
+    LLM (Ollama/OpenAI)-->>LangGraph (Agent): SQL Query
+    LangGraph (Agent)->>SQLite (DB): Execute Query
+    SQLite (DB)-->>LangGraph (Agent): Data Results
+    LangGraph (Agent)->>LLM (Ollama/OpenAI): Format Answer
+    LLM (Ollama/OpenAI)-->>LangGraph (Agent): Natural Language Answer
+    LangGraph (Agent)-->>FastAPI (API): Final State
+    FastAPI (API)-->>Streamlit (UI): JSON Response
+    Streamlit (UI)-->>User: Answers + SQL + Metrics
 ```
 
 ### 2. LangGraph Workflow
