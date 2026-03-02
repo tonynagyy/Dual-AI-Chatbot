@@ -1,32 +1,12 @@
 # Inventory Chatbot (SQL)
 
-A professional AI conversational agent that translates natural language into structured SQL queries to manage and query an enterprise relational database.
+A professional AI terminal-based conversational agent that translates natural language into structured SQL queries to query an enterprise relational database.
 
 ## 🏗️ System Architecture
 
-### 1. Terminal Interaction Flow
+The chatbot operates as a state-machine based conversational agent using **LangGraph**. It handles intent recognition, SQL generation, automated error correction, and natural language synthesis.
 
-The chatbot operates as a state-machine based conversational agent. It receives natural language input, parses intent, generates SQL, executes it, and converts results back into human-readable reports.
-
-```mermaid
-graph TD
-    A[User Input] --> B[Router Node]
-    B -- "Intent: Chat" --> C[Chat Node]
-    B -- "Intent: SQL" --> D[SQL Generator Node]
-    C --> E[Final Response]
-    D --> F[SQL Executor Node]
-    F -- "Success" --> G[Responder Node]
-    F -- "Error" --> H[SQL Corrector Node]
-    H --> F
-    G --> E
-```
-
-### 2. Core Features
-
-- **Intent Recognition**: Distinguishes between database queries and general chitchat.
-- **Self-Correction**: Automatically detects and fixes SQL syntax errors or execution failures before responding.
-- **Business Logic**: Automatically filters for **Active** records and excludes **Disposed/Retired** assets by default.
-- **SQLite Engine**: Optimized for SQLite3 with specialized date and filtering rules.
+(Detailed diagram available in [architecture.md](./architecture.md))
 
 ## 🚀 Setup & Installation
 
@@ -77,6 +57,7 @@ python main.py
 
 - `main.py`: **Primary Entry Point** for terminal-based interaction.
 - `agent/`: Core logic (Graph, Nodes, Prompts, State).
-- `architecture.md`: Visual architecture diagrams (Mermaid).
+- `architecture.md`: Visual architecture diagrams.
 - `inventory_chatbot.db`: Local SQLite database.
 - `setup_database.py`: Database initialization script.
+- `requirements.txt`: Project dependencies.
