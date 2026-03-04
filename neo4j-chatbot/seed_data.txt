@@ -1,0 +1,50 @@
+Lionel Messi plays for Inter Miami.
+Kevin De Bruyne plays for Manchester City.
+Erling Haaland plays for Manchester City.
+Kylian Mbappé plays for Real Madrid.
+Luka Modrić plays for Real Madrid.
+Jude Bellingham plays for Real Madrid.
+Cristiano Ronaldo played in the Champions League.
+Robert Lewandowski plays for Barcelona.
+Mohamed Salah plays for Liverpool.
+Karim Benzema played in the Champions League.
+Harry Kane plays for Bayern Munich.
+Vinícius Júnior plays for Real Madrid.
+Thibaut Courtois plays for Real Madrid.
+Antoine Griezmann plays for Atlético Madrid.
+Bernardo Silva plays for Manchester City.
+Rodri plays for Manchester City.
+Bukayo Saka plays for Arsenal.
+Phil Foden plays for Manchester City.
+Victor Osimhen plays for Napoli.
+Joshua Kimmich plays for Bayern Munich.
+Rafael Leão plays for AC Milan.
+Lautaro Martínez plays for Inter Milan.
+Pedri plays for Barcelona.
+Bruno Fernandes plays for Manchester United.
+Martin Ødegaard plays for Arsenal.
+Declan Rice plays for Arsenal.
+Gavi plays for Barcelona.
+Jamal Musiala plays for Bayern Munich.
+Florian Wirtz plays for Bayer Leverkusen.
+Alisson Becker plays for Liverpool.
+Ederson plays for Manchester City.
+Trent Alexander-Arnold plays for Liverpool.
+Achraf Hakimi plays for Paris Saint-Germain.
+Ruben Dias plays for Manchester City.
+Virgil van Dijk plays for Liverpool.
+Lionel Messi is from Argentina.
+Cristiano Ronaldo is from Portugal.
+Kevin De Bruyne is from Belgium.
+Kylian Mbappé is from France.
+Erling Haaland is from Norway.
+Jude Bellingham is from England.
+Luka Modrić is from Croatia.
+Vinícius Júnior is from Brazil.
+Mohamed Salah is from Egypt.
+Robert Lewandowski is from Poland.
+Harry Kane is from England.
+Thibaut Courtois is from Belgium.
+Antoine Griezmann is from France.
+Bernardo Silva is from Portugal.
+Rodri is from Spain.
