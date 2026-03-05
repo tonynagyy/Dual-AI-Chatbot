@@ -1,0 +1,30 @@
+Documentation – What I Did and Why
+======================================
+
+- Used SQLite as the database.
+  Reason: It is local, lightweight database that is perfect for storing the data.
+
+- Used the Mistral model running locally via Ollama.
+  Reason: It is easy to use, and it is free to use.
+
+- Built a Router node (router_node) using LangGraph.
+  Reason: The app needs to know right away if the user is just saying hi or if they are asking a real question about the database.
+
+- Built a SQL generator (sql_generator_node) to write database queries.
+  Reason: To translate natural language questions into SQL code that the database can actually run.
+
+- Added a corrector node (sql_corrector_node).
+  Reason: Sometimes the AI makes a small error in the SQL code. This node catches the error and fixes it automatically so the user never sees a failure,
+  or he might see error if it fails after the correcter tries to fix it.
+
+- Built an executor (sql_executor_node) to run the queries.
+  Reason: This handles the connection to the .db file and pulls the data rows out.
+
+- Built a responder (responder_node) to format the final answer.
+  Reason: Database rows are hard to read. This turns the data into a clear, professional sentence for the user.
+
+- Wrote architecture.md file with diagrams.
+  Reason: To visualize the LangGraph state machine moves the data between different nodes.
+
+- Created README.md.
+  Reason: To give a clear guide on how to install the requirements and launch the bot.
