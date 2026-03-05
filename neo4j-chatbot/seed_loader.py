@@ -1,14 +1,20 @@
 import os
+import logging
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("openai").setLevel(logging.WARNING)
+logging.getLogger("neo4j").setLevel(logging.WARNING)
+
 from classifier import IntentClassifier
 from cypher_generator import CypherGenerator
 from executor import Neo4jExecutor
 
+
 def load_seed_data(file_path: str = "seed_data.txt"):
     if not os.path.exists(file_path):
-        print(f"Error: {file_path} not found.")
+        print(f"Error: '{file_path}' not found.")
         return
 
-    classifier = IntentClassifier()
+    #classifier = IntentClassifier()
     generator = CypherGenerator()
     executor = Neo4jExecutor()
 
@@ -16,29 +22,27 @@ def load_seed_data(file_path: str = "seed_data.txt"):
         with open(file_path, "r", encoding="utf-8") as f:
             lines = [line.strip() for line in f if line.strip()]
 
-        print(f"Starting seed loading for {len(lines)} facts...\\n")
+        print(f"Seeding {len(lines)} facts into Neo4j...\n" + "-" * 45)
+        success, failed = 0, 0
 
-        for line in lines:
-            print(f"Inserting: {line}")
-            
-            intent = classifier.classify(line)
-            if intent != "add":
-                intent = "add"
-
+        for i, line in enumerate(lines, 1):
+            print(f"[{i}/{len(lines)}] {line}")
             try:
-                cypher_query = generator.generate(line, intent)
-                
+                # Force intent to 'add' — seed data is always additive
+                cypher_query = generator.generate(line, "add")
                 executor.execute_query(cypher_query)
-                
-                print("Success.")
+                print("  ✓ Inserted\n")
+                success += 1
             except Exception as e:
-                print(f"Failed. Error: {e}")
-                
-            print("-" * 40)
-            
+                print(f"  ✗ Failed: {e}\n")
+                failed += 1
+
+        print("-" * 45)
+        print(f"Seed complete. Success: {success} | Failed: {failed}")
+
     finally:
         executor.close()
-        print("Seed loading complete.")
+
 
 if __name__ == "__main__":
     load_seed_data()
