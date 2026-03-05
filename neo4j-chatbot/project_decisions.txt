@@ -1,0 +1,37 @@
+Documentation – What I Did and Why
+======================================
+
+- Used Neo4j as the database.
+  Reason: The data is about players and teams. A graph database is perfect for storing relation between things,
+  and neo4j is a graph database.
+
+- Used the Mistral model running locally via Ollama.
+  Reason: It works offline and is free.
+
+- Built a classifier (classifier.py) to detect what the user wants.
+  Reason: The app needs to know if the user is inquiring, adding, updating, or deleting before doing anything.
+
+- Built a Cypher generator (cypher_generator.py) to write database queries.
+  Reason: The classifier only detects intent. A separate module translates that into a query to be executed in the database.
+
+- Added a safety check inside the generator.
+  Reason: To block dangerous queries like deleting the entire database by accident.
+
+- Built an executor (executor.py) to run the queries.
+  Reason: Keeps database connection logic in one place and away from other modules.
+
+- Built a response engine (response_engine.py) to format the final answer.
+  Reason: The chatbot needs to generate a response based on the request of the user.
+        Now It will response if the request was just chitchat or and actual request to the database.
+
+- Fixed the update query to delete all old relations before adding the new one.
+  Reason: Without this, updating a fact would just add a duplicate instead of replacing it.
+
+- Created seed_loader.py to fill the database with data needed for the chatbot.
+  Reason: The chatbot needs real data to answer questions right after setup.
+
+- Created the architecture diagram in architecture.md.
+  Reason: To show the architecture of the chatbot.
+
+- Created the README.md.
+  Reason: To show how to run the chatbot.
